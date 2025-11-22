@@ -1,0 +1,98 @@
+/* Professional Animation Keyframes */
+@keyframes professionalFloat {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes professionalFadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes professionalShimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes professionalPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.02); }
+}
+
+@keyframes professionalGlow {
+  0%, 100% { box-shadow: 0 0 5px rgba(99, 102, 241, 0.3); }
+  50% { box-shadow: 0 0 20px rgba(99, 102, 241, 0.6); }
+}
+
+@keyframes gentleGlow {
+  0%, 100% {
+    text-shadow: 0 0 10px rgba(16, 185, 129, 0.3), 0 0 20px rgba(59, 130, 246, 0.2);
+    transform: scale(1);
+  }
+  50% {
+    text-shadow: 0 0 20px rgba(16, 185, 129, 0.5), 0 0 30px rgba(59, 130, 246, 0.4);
+    transform: scale(1.02);
+  }
+}
+
+/* Professional Animation Classes */
+.professional-float { animation: professionalFloat 3s ease-in-out infinite; }
+.professional-fade-in { animation: professionalFadeIn 0.8s ease-out forwards; }
+.professional-pulse { animation: professionalPulse 2s ease-in-out infinite; }
+.professional-glow { animation: professionalGlow 2s ease-in-out infinite; }
+.gentle-glow { animation: gentleGlow 4s ease-in-out infinite; }
+
+.professional-shimmer {
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  background-size: 200% 100%;
+  animation: professionalShimmer 2s infinite;
+}
+
+/* Professional Hover Effects */
+.professional-hover-lift {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.professional-hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15), 0 10px 10px -5px rgba(0, 0, 0, 0.08);
+}
+
+/* Legacy support */
+.animate-blob { animation: professionalFloat 7s infinite; }
+.fade-in { animation: professionalFadeIn 0.8s ease-out forwards; }
+.animation-delay-2000 { animation-delay: 2s; }
+.animation-delay-4000 { animation-delay: 4s; }
+
+/* Currency Selector Sidebar Styles */
+.currency-selector-sidebar button {
+  background: white !important;
+  border: 1px solid #e2e8f0 !important;
+  color: #475569 !important;
+  font-size: 0.875rem !important;
+  padding: 0.5rem 0.75rem !important;
+}
+
+.currency-selector-sidebar button:hover {
+  background: #f8fafc !important;
+  border-color: #cbd5e1 !important;
+}
+
+.currency-selector-sidebar .absolute {
+  background: white !important;
+  border: 1px solid #e2e8f0 !important;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !important;
+}
+
+.currency-selector-sidebar .absolute > div {
+  color: #475569 !important;
+}
+
+.currency-selector-sidebar .absolute > div:hover {
+  background: #f1f5f9 !important;
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .professional-float, .professional-pulse, .professional-shimmer, .professional-glow, .gentle-glow { animation: none; }
+  .professional-hover-lift:hover { transform: none; }
+}
