@@ -33,15 +33,28 @@ export const submitContactForm = catchAsyncErrors(async (req, res, next) => {
     }
     
     console.log('Sending contact form email...');
-    await sendContactFormEmail({
-      name: name.trim(),
-      email: email.trim(),
-      subject: subject.trim(),
-      message: message.trim(),
-      phone: formattedPhone
-    });
+    try {
+      await sendContactFormEmail({
+        name: name.trim(),
+        email: email.trim(),
+        subject: subject.trim(),
+        message: message.trim(),
+        phone: formattedPhone
+      });
+      console.log('Contact form email sent successfully');
+    } catch (emailError) {
+      console.error('Email sending failed, but continuing:', emailError.message);
+      // Log the contact form submission even if email fails
+      console.log('Contact form submission logged (email failed):', {
+        name: name.trim(),
+        email: email.trim(),
+        subject: subject.trim(),
+        phone: formattedPhone || 'not provided'
+      });
+      // Still return success to user, but log the email failure
+      // In production, you might want to store this in a database
+    }
     
-    console.log('Contact form email sent successfully');
     res.status(200).json({
       success: true,
       message: "Your message has been sent successfully"

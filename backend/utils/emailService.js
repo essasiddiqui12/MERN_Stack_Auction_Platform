@@ -276,13 +276,13 @@ export const sendContactFormEmail = async (contactDetails) => {
     console.log('Creating email transporter...');
     const transporter = createTransporter();
     
-    // Verify transporter connection
+    // Verify transporter connection (non-blocking - just log if fails)
     try {
       await transporter.verify();
       console.log('Email transporter verified successfully');
     } catch (verifyError) {
-      console.error('Email transporter verification failed:', verifyError);
-      throw new Error(`Email service configuration error: ${verifyError.message}`);
+      console.warn('Email transporter verification failed (will attempt to send anyway):', verifyError.message);
+      // Don't throw - try to send anyway, some SMTP servers don't support verify()
     }
     
     const mailOptions = {
