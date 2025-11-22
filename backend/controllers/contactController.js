@@ -19,17 +19,12 @@ export const submitContactForm = catchAsyncErrors(async (req, res, next) => {
       return next(new ErrorHandler("Please provide a valid email address", 400));
     }
     
-    // Phone is optional - only validate if provided and not empty
+    // Phone is optional - accept any format since it's not required
     let formattedPhone = null;
-    if (phone && phone.trim()) {
-      // More lenient phone validation - accepts various formats
-      const phoneRegex = /^\+?\d{1,4}[\s-]?\d{5,15}$/;
-      if (!phoneRegex.test(phone.trim())) {
-        console.warn('Phone number format warning:', phone);
-        // Don't reject, just log warning - phone is optional
-      } else {
-        formattedPhone = phone.trim();
-      }
+    if (phone && typeof phone === 'string' && phone.trim()) {
+      formattedPhone = phone.trim();
+      // Just log the phone, don't validate since it's optional
+      console.log('Phone provided:', formattedPhone);
     }
     
     console.log('Sending contact form email...');
