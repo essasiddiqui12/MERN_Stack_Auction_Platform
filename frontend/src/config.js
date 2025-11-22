@@ -1,5 +1,5 @@
 // API URLs
-const PROD_BACKEND_URL = 'https://backend-p19vlt22r-essa-siddiquis-projects.vercel.app';
+const PROD_BACKEND_URL = 'https://auction-backend-lv5a.onrender.com';
 
 export const API_BASE_URL =
   import.meta.env.VITE_API_URL ||
