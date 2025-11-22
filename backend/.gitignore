@@ -1,0 +1,8 @@
+node_modules/ 
+tmp/ 
+.env 
+.env.* 
+.vercel/ 
+.heroku/ 
+*.log 
+.DS_Store
